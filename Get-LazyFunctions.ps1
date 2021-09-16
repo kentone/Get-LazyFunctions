@@ -145,7 +145,7 @@ function Send-ToEmail {
   write-host "Message Sent"
 }
 
-##############################################TimeStamp
+##############################################Get-TimeStamp
 <#
 .SYNOPSIS
 Gives you a timestamp which helps sort by date
@@ -154,12 +154,12 @@ Gives you a timestamp which helps sort by date
 Gives you a timestamp which helps sort by date
 
 .EXAMPLE
-(TimeStamp)
+(Get-TimeStamp)
 
 .NOTES
 If you fill a variable with it, don't forget to update it.
 #>
-function TimeStamp {
+function Get-TimeStamp {
   param(
     $format
   )
@@ -170,7 +170,7 @@ function TimeStamp {
     Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
   }
   else {
-    Write-Host 'Timestamp function: You need to define the format parameter to either "log" or "file"'
+    Write-Host 'Get-Timestamp function: You need to define the format parameter to either "log" or "file"'
     break
   }
 
@@ -251,8 +251,8 @@ function Add-Log {
   }
   # Log format ex: 
   #      2021-09-14 22:25:16           [Info]        This is dog
-  # Depends on TimeStamp function to work
-  $log = (TimeStamp -format "log") + " [$level]" + " $log" + "$newline"
+  # Depends on Get-TimeStamp function to work
+  $log = (Get-TimeStamp -format "log") + " [$level]" + " $log" + "$newline"
   # Writing to file
   $log | Out-File -Append -FilePath $path
 }
